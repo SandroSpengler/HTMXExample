@@ -23,24 +23,34 @@
                 Fetch Orders Swap
             </button>
             <button hx-get="http://localhost:3000/api/orders" hx-trigger="mouseover"
-                hx-target="#users" hx-vals='{"limit":3}'
+                hx-target="#orders" hx-vals='{"limit":3}'
                 class="bg-blue-700 text-white py-2 px-3 my-5 rounded-lg">
                 Fetch Orders Target
             </button>
-            <button hx-get="http://localhost:3000/api/orders/delay" hx-target="#users"
+            <button hx-get="http://localhost:3000/api/orders/delay" hx-target="#orders"
                 hx-indicator="#loading" hx-confirm="Are you sure?"
                 class="bg-blue-700 text-white py-2 px-3 my-5 rounded-lg">
                 Fetch Orders Target
             </button>
         </div>
+
         <span class="htmx-indicator" id="loading">
-            currently loading users...
+            currently loading orders...
         </span>
-        <div id="users"></div>
+        <div id="orders"></div>
+        <form hx-trigger="submit" hx-post="/api/orders" hx-target="#newOrder"
+            hx-indicator="#creating">
+            <label for="id">ID:</label>
+            <input type="number" id="id" name="id" class="border p-2 rounded" value="32" required />
+            <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded">
+                Create
+            </button>
+        </form>
+        <span class="htmx-indicator" id="creating">
+            currently creating order...
+        </span>
+        <div id="newOrder"></div>
     </div>
-
-
-
 
 </body>
 

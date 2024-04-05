@@ -45,3 +45,18 @@ app.get("/api/orders/delay", (req, res) => {
 		res.send(html);
 	}, 5000);
 });
+
+app.post("/api/orders", (req, res) => {
+	const body = req.body;
+
+	const newOrder = {
+		id: body.id,
+		orderDate: new Date().toISOString(),
+	};
+
+	const html = `
+        <div>${newOrder.id} ${newOrder.orderDate}</div>
+    `;
+
+	res.send(html);
+});
